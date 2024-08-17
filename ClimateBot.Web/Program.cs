@@ -2,25 +2,27 @@ using ClimateBot.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ClimateBot.Services;
+using ClimateBot.Web.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Register your configuration singleton
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
-// Register the NewsServiceFactory
-//DESIGN PATTERN: Singleton
+// Register your NewsService related configurations
 builder.Services.AddSingleton<INewsServiceFactory, NewsServiceFactory>();
-
-//Utilizamos el factory para pasar el resto de servicios de apis que necesitabamos.
-
-
 builder.Services.AddHttpClient<INewsService, NewsService>((serviceProvider, httpClient) =>
 {
     var configuration = serviceProvider.GetRequiredService<IConfiguration>();
     httpClient.BaseAddress = new Uri($"{configuration["NewsAPI:BaseUrl"]}{configuration["NewsAPI:ApiKey"]}");
-
 });
+
+// Register the ClimateService
+// DESIGN PATTERN: Scoped or Singleton based on your use case
+builder.Services.AddScoped<IClimateService, ClimateService>();
 
 var app = builder.Build();
 
