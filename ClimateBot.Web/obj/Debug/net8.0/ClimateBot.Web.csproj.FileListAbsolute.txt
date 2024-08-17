@@ -1,0 +1,9 @@
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.csproj.AssemblyReference.cache
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.AssemblyInfoInputs.cache
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.AssemblyInfo.cs
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.csproj.CoreCompileInputs.cache
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.RazorAssemblyInfo.cache
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.RazorAssemblyInfo.cs
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Web\obj\Debug\net8.0\ClimateBot.Web.sourcelink.json

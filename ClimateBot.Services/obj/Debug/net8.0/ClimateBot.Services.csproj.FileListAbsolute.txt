@@ -1,0 +1,5 @@
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.AssemblyInfoInputs.cache
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.AssemblyInfo.cs
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.csproj.CoreCompileInputs.cache
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.sourcelink.json

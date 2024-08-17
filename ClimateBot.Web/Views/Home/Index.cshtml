@@ -1,0 +1,162 @@
+﻿@model CEPAW.NewsApp.Controllers.HomeController.HomeViewModel;
+
+@using System.Linq
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="~/css/widget.css" rel="stylesheet" asp-append-version="true">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 3); /* Subtle shadow */
+            border: none; /* No border */
+        }
+        .card-title {
+            color: #000000; /* Bootstrap primary color */
+            font-size: 1.25rem; /* Larger font size for titles */
+            margin-bottom: 0.5rem;
+        }
+        .card-text {
+            font-size: 1rem; /* Standard font size */
+            color: #ffff; /* Darker gray for text */
+        }
+        .card-footer {
+            background-color: #f8f9fa; /* Light gray for footer */
+            border-top: 1px solid #dee2e6; /* Light border on top */
+        }
+        .btn-primary {
+            background-color: #000000; /* Bootstrap primary color */
+            border-color: #007bff; /* Same border color */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            border-color: #0056b3; /* Same border color */
+        }
+        h1 {
+            color: #ffffff; /* Darker heading */
+            font-size: 5rem; /* Larger font size */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-6">
+                <div id="stock-carousel" class="carousel widget">
+                    @if (Model.StockData != null && Model.StockData.Any())
+                    {
+                        @for (var i = 0; i < Model.StockData.Count; i++)
+                        {
+                            <div class="stock-slide" style="display: @(i == 0 ? "block" : "none")">
+                                <div class="boxs widget-content">
+                                    <div class="pw_content">
+                                        <h5>@Model.StockData[i].Name (@Model.StockData[i].Symbol)</h5>
+                                        <p>Price: $@Model.StockData[i].Price</p>
+                                        <p>Change: @Model.StockData[i].Change ( @Model.StockData[i].ChangePercent % )</p>
+                                        <p>Prev Close: $@Model.StockData[i].PreviousClose</p>
+                                        <p>Update: @Model.StockData[i].LastUpdateUtc</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <button class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</button>
+                        <button class="carousel-control next" onclick="moveSlide(1)">&#10095;</button>
+                    }
+                    else
+                    {
+                        <p>No stock data available.</p>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="climate-carousel" class="carousel widget">
+                    @if (Model.ClimateData != null)
+                    {
+                        <div class="climate-slide" style="display: block">
+                            <div class="boxs widget-content">
+                                <div class="cw_content">
+                                    <h5>@Model.ClimateData.Name (@Model.ClimateData.Sys.Country)</h5>
+                                    <p>Temp: @Model.ClimateData.Main.Temp Kelvin</p>
+                                    <p>Feels Like: @Model.ClimateData.Main.FeelsLike Kelvin</p>
+                                    <p>Weather: @Model.ClimateData.Weather[0].Main - @Model.ClimateData.Weather[0].Description</p>
+                                    <p>Humidity: @Model.ClimateData.Main.Humidity%</p>
+                                    <p>Pressure: @Model.ClimateData.Main.Pressure hPa</p>
+                                    <p>Wind: @Model.ClimateData.Wind.Speed m/s</p>
+                                    <p>Visibility: @Model.ClimateData.Visibility meters</p>
+                                    <p>Sunrise: @DateTimeOffset.FromUnixTimeSeconds(Model.ClimateData.Sys.Sunrise).DateTime</p>
+                                    <p>Sunset: @DateTimeOffset.FromUnixTimeSeconds(Model.ClimateData.Sys.Sunset).DateTime</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <p>No climate data available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Latest News</h1>
+        <div class="row">
+            @foreach (var article in Model.NewsArticles)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@article.Title</h5>
+                            <p class="card-text">@article.Description</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <a href="@article.Url" class="btn btn-primary">Read more</a>
+                            <p class="text-muted mt-2 mb-0">Published: @article.PublishedDate</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+@section Scripts {
+    <script>
+        var currentSlide = 0;
+
+        function showSlide(index) {
+            var slides = document.querySelectorAll('.stock-slide');
+            if (index >= slides.length) { currentSlide = 0; }
+            if (index < 0) { currentSlide = slides.length - 1; }
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[currentSlide].style.display = "block";
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide += step);
+        }
+
+        // Initial slide
+        showSlide(currentSlide);
+    </script>
+}
+
+</html>
