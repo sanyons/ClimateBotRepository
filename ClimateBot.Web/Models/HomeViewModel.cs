@@ -1,4 +1,7 @@
-﻿namespace ClimateBot.Web.Models
+﻿using ClimateBot.Models;
+using static ClimateBot.Services.StocksService;
+
+namespace ClimateBot.Web.Models
 {
     public class HomeViewModel
     {

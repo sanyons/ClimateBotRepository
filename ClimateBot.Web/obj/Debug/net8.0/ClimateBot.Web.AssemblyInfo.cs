@@ -12,11 +12,11 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-ClimateBot.Web-cfe122e3-d423-493f-9859-daeceaa9a824")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-ClimateBot.Web-e7cc8e3c-9f0d-4ce8-8e4d-8fcea9d8ed67")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClimateBot.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8574685718b39b9bb041e1c70e0813cfa7d097a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd96ff4fb3d13520e1365737d32e1d30ce337640")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClimateBot.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClimateBot.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

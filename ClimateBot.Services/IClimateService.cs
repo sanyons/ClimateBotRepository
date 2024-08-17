@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClimateBot.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,3 +14,4 @@ namespace ClimateBot.Services
         Task<ClimateData> GetClimateDataAsync();
     }
 }
+

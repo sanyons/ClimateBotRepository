@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-ClimateBot.Web-cfe122e3-d423-493f-9859-daeceaa9a824</UserSecretsId>
+    <UserSecretsId>aspnet-ClimateBot.Web-e7cc8e3c-9f0d-4ce8-8e4d-8fcea9d8ed67</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +13,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

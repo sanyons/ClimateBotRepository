@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using ClimateBot.Services;
 namespace ClimateBot.Web.Controllers
 {
     public class NewsController : Controller

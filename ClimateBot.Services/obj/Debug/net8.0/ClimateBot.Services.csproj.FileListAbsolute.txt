@@ -1,5 +1,16 @@
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\ClimateBot.Services.deps.json
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\ClimateBot.Services.dll
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\ClimateBot.Services.pdb
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\ClimateBot.Models.dll
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\ClimateBot.Models.pdb
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.csproj.AssemblyReference.cache
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.AssemblyInfoInputs.cache
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.AssemblyInfo.cs
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.csproj.CoreCompileInputs.cache
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.sourcelink.json
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.csproj.CopyComplete
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.dll
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\refint\ClimateBot.Services.dll
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ClimateBot.Services.pdb
+C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ref\ClimateBot.Services.dll

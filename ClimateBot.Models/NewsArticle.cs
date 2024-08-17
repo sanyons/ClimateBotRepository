@@ -17,4 +17,3 @@ namespace ClimateBot.Models
         public string Source { get; set; }
     }
 }
-}

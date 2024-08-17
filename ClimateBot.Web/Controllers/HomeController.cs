@@ -1,6 +1,8 @@
 using ClimateBot.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ClimateBot.Models;
+using ClimateBot.Services;
 
 namespace ClimateBot.Web.Controllers
 {
