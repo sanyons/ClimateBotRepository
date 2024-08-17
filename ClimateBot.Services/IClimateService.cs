@@ -1,17 +1,22 @@
-﻿using ClimateBot.Models;
+﻿using ClimateBot.Web.Services;
+using ClimateBot.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClimateBot.Services
+using System.Threading.Tasks;
+
+
+using System.Threading.Tasks;
+
+
+namespace ClimateBot.Web.Services
 {
     public interface IClimateService
     {
-        // ISP
-        // Define interfaz especifica para el servicio del clima
-        Task<ClimateData> GetClimateDataAsync();
+        Task<ClimateData> GetClimateDataAsync(string city);
+    
     }
 }
-

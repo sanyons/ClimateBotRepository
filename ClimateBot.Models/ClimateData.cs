@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-namespace ClimateBot.Models
+
+namespace ClimateBot.Web.Models
 {
     public class ClimateData
     {
@@ -19,7 +16,7 @@ namespace ClimateBot.Models
         public Sys Sys { get; set; }
         public int Timezone { get; set; }
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; }  // City name
         public int Cod { get; set; }
     }
 

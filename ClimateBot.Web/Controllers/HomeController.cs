@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ClimateBot.Models;
 using ClimateBot.Services;
+using ClimateBot.Web.Services;
 
 namespace ClimateBot.Web.Controllers
 {
@@ -32,7 +33,7 @@ namespace ClimateBot.Web.Controllers
         {
             //Obtiene los datos de los servicios
             var newsArticles = await _newsService.GetLatestNewsAsync();
-            var climateData = await _climateService.GetClimateDataAsync();
+            var climateData = await _climateService.GetClimateDataAsync("San José");
             var stockData = await _stocksService.GetStockDataAsync();
 
             //Prepara el modelo

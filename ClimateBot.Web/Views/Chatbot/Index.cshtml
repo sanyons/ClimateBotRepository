@@ -1,0 +1,32 @@
+﻿@model ClimateBot.Web.Controllers.ChatRequest
+
+<h2>Chatbot del Clima</h2>
+
+<form id="chatForm">
+    <div class="form-group">
+        <input type="text" id="questionInput" class="form-control" placeholder="Pregunta sobre el clima..." />
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<div id="responseDiv" class="mt-4"></div>
+
+@section Scripts {
+    <script>
+        document.getElementById('chatForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const question = document.getElementById('questionInput').value;
+
+            const response = await fetch('/Chatbot/Ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question })
+            });
+
+            const data = await response.json();
+            document.getElementById('responseDiv').innerText = data.response;
+        });
+    </script>
+}

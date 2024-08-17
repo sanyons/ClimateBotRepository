@@ -1,17 +1,11 @@
-﻿using ClimateBot.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using ClimateBot.Web.Models;
 
-namespace ClimateBot.Services
+namespace ClimateBot.Web.Services
 {
-    //DIP
-    //OCP
-    // La clase ClimateService está abierta para extensión (nuevas funcionalidades) pero cerrada para modificación
     public class ClimateService : IClimateService
     {
         private readonly HttpClient _httpClient;
@@ -21,16 +15,14 @@ namespace ClimateBot.Services
         public ClimateService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
-            ApiKey = configuration.GetValue<string>("ClimateAPI:ApiKey");
-            BaseUrl = configuration.GetValue<string>("ClimateAPI:BaseUrl");
+            ApiKey = configuration.GetValue<string>("OpenWeatherAPI:ApiKey");
+            BaseUrl = configuration.GetValue<string>("OpenWeatherAPI:BaseUrl");
         }
 
-        public async Task<ClimateData> GetClimateDataAsync()
+        public async Task<ClimateData> GetClimateDataAsync(string city)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}");
-            request.Headers.Add("x-rapidapi-key", ApiKey);
-            request.Headers.Add("x-rapidapi-host", "rapidweather.p.rapidapi.com");
-            var response = await _httpClient.SendAsync(request);
+            var requestUrl = $"{BaseUrl}?q={city}&appid={ApiKey}&units=metric";
+            var response = await _httpClient.GetAsync(requestUrl);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -39,13 +31,10 @@ namespace ClimateBot.Services
             }
 
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(jsonResponse); // Para depuración
-
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var climateData = JsonSerializer.Deserialize<ClimateData>(jsonResponse, options);
 
             return climateData;
-
         }
     }
 }
