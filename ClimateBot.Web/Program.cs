@@ -3,11 +3,24 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ClimateBot.Services;
 using ClimateBot.Web.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add session support
+builder.Services.AddDistributedMemoryCache(); // Utiliza memoria caché distribuida para almacenar sesiones
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Puedes ajustar esto según tus necesidades
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 // Register your configuration singleton
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
@@ -21,7 +34,6 @@ builder.Services.AddHttpClient<INewsService, NewsService>((serviceProvider, http
 });
 
 // Register the ClimateService
-// DESIGN PATTERN: Scoped or Singleton based on your use case
 builder.Services.AddScoped<IClimateService, ClimateService>();
 
 var app = builder.Build();
@@ -39,6 +51,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+// Make sure to call UseSession after UseRouting and before UseEndpoints
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
