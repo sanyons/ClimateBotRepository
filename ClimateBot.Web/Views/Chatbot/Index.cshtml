@@ -72,19 +72,27 @@
             // Mostrar la pregunta del usuario en el chat
             addChatBubble(question, 'user');
 
-            // Enviar la pregunta al servidor
-            const response = await fetch('/Chatbot/Ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ question })
-            });
+            try {
+                // Enviar la pregunta al servidor
+                const response = await fetch('/Chatbot/Ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
 
-            const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`); 
+                }
 
-            // Mostrar la respuesta del bot en el chat
-            addChatBubble(data.response, 'bot');
+                const data = await response.json();
+                // Mostrar la respuesta del bot en el chat
+                addChatBubble(data.response, 'bot');
+            } catch (error) {
+                console.error('Fetch error:', error);
+                addChatBubble("Lo siento, hubo un problema al procesar tu solicitud. Por favor, intenta nuevamente.", 'bot');
+            }
 
             // Limpiar el campo de entrada
             questionInput.value = '';
@@ -101,5 +109,6 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
     </script>
+
 </body>
 </html>

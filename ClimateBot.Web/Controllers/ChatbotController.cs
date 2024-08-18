@@ -1,21 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ClimateBot.Web.Services;
 using System.Threading.Tasks;
 using ClimateBot.Web.Models;
-using System.Text;
 using System.Text.RegularExpressions;
-using System;
+using System.Text;
 
 namespace ClimateBot.Web.Controllers
 {
     public class ChatbotController : Controller
     {
         private readonly IClimateService _climateService;
+        private readonly ILogger<ChatbotController> _logger;
 
-        public ChatbotController(IClimateService climateService)
+        public ChatbotController(IClimateService climateService, ILogger<ChatbotController> logger)
         {
             _climateService = climateService;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -26,69 +27,129 @@ namespace ClimateBot.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Ask([FromBody] ChatRequest request)
         {
-            string city = ExtractCity(request.Question);
-            var climateData = await _climateService.GetClimateDataAsync(city);
-            string response = BuildResponse(climateData, request.Question);
-            return Ok(new { response });
+            _logger.LogInformation("Received question: {Question}", request.Question);
+
+            try
+            {
+                string intent = DetermineIntent(request.Question);
+                if (intent == "unknown")
+                {
+                    _logger.LogWarning("Could not determine intent for question: {Question}", request.Question);
+                    return Ok(new { response = "No estoy seguro de cómo ayudarte con eso. ¿Puedes especificar si quieres saber sobre el clima o necesitas ayuda con otra cosa?" });
+                }
+
+                string city = ExtractCity(request.Question);
+                if (string.IsNullOrEmpty(city) && intent == "weather")
+                {
+                    _logger.LogWarning("Could not extract city from question: {Question}", request.Question);
+                    return Ok(new { response = "No pude determinar la ciudad a partir de tu mensaje. ¿Podrías especificar más claramente?" });
+                }
+
+                var climateData = await _climateService.GetClimateDataAsync(city);
+                if (climateData == null || string.IsNullOrWhiteSpace(climateData.Name))
+                {
+                    _logger.LogError("Failed to retrieve climate data for city: {City}", city);
+                    return Ok(new { response = $"No pude encontrar información sobre el clima para {city}. ¿Podrías verificar el nombre de la ciudad?" });
+                }
+
+                string response = BuildResponse(climateData, request.Question, intent);
+                HttpContext.Session.SetString("lastCity", city);
+                _logger.LogInformation("Successfully processed request for city: {City}", city);
+                return Ok(new { response });
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while processing the request.");
+                return StatusCode(500, new { response = "Lo siento, hubo un problema al procesar tu solicitud. Por favor, intenta nuevamente." });
+            }
         }
 
         private string ExtractCity(string question)
         {
-            var cityRegex = new Regex(@"\b(San José|New York|London|Paris|Tokyo)\b", RegexOptions.IgnoreCase);
-            var match = cityRegex.Match(question);
-            if (match.Success)
+            // Elimina los signos de puntuación y convierte todo el texto a minúsculas para mejorar la coincidencia
+            string cleanedQuestion = Regex.Replace(question.ToLower(), @"[^\w\s]", "");
+
+            // Definir un conjunto de ciudades conocidas para ayudar en la detección
+            var knownCities = new List<string> { "londres", "madrid", "new york", "san jose", "tokio", "paris", "lima", "mexico", "buenos aires", "santiago", "london", "san josé", "washington", "cartago" };
+
+            // Buscar la primera ciudad conocida que coincida en la pregunta
+            foreach (var city in knownCities)
             {
-                var city = match.Value;
-                HttpContext.Session.SetString("lastCity", city); // Update the last city in the session
-                return city;
+                if (cleanedQuestion.Contains(city))
+                {
+                    return city;
+                }
             }
 
-            // Fallback to the last known city if no new city is found in the question
-            return HttpContext.Session.GetString("lastCity") ?? "San José"; // Default if no city found ever
+            // Intentar usar regex para extraer cualquier palabra capitalizada que podría ser una ciudad
+            var cityRegex = new Regex(@"\b([A-Z][a-z]+(?:\s[A-Z][a-z]+)*)\b");
+            var matches = cityRegex.Matches(question);
+            foreach (Match match in matches)
+            {
+                if (match.Success)
+                {
+                    return match.Value;
+                }
+            }
+
+            return HttpContext.Session.GetString("lastCity");
         }
 
-        private string BuildResponse(ClimateData climateData, string question)
+        private string BuildResponse(ClimateData climateData, string question, string intent)
         {
-            string intent = DetermineIntent(question);
-            switch (intent)
+            if (intent == "greeting")
             {
-                case "greeting":
-                    return "Hola, ¿cómo puedo ayudarte con el clima hoy?";
-                case "goodbye":
-                    return "Adiós, ¡espero haber sido de ayuda!";
-                case "info":
-                    return "Puedo darte información actualizada sobre el clima en varias ciudades. Solo pregúntame.";
-                case "weather":
-                default:
-                    if (climateData == null)
-                    {
-                        return "Lo siento, no pude encontrar información sobre el clima para esa ubicación.";
-                    }
-                    var response = new StringBuilder($"En {climateData.Name}, la temperatura es de {climateData.Main.Temp}°C.");
-                    response.Append($" El clima es {climateData.Weather[0].Description} y el viento sopla a {climateData.Wind.Speed} m/s.");
-                    response.Append(" ¿Hay algo más que te gustaría saber?");
-                    return response.ToString();
+                return "Hola, ¿cómo puedo ayudarte hoy? ¿Quieres saber el clima de alguna ciudad específica?";
             }
+            if (intent == "goodbye")
+            {
+                return "¡Gracias por usar nuestro servicio de chat! Espero haber sido útil. ¡Hasta luego!";
+            }
+            if (intent == "info")
+            {
+                return "Puedo proporcionarte información sobre el clima de cualquier ciudad. Solo dime el nombre de la ciudad y te diré cómo está el clima allí.";
+            }
+
+            var response = new StringBuilder($"En {climateData.Name}, {climateData.Sys.Country}, la temperatura es de {climateData.Main.Temp}°C. ");
+            response.Append($"El clima es {climateData.Weather[0].Description} y el viento sopla a {climateData.Wind.Speed} m/s.");
+
+            if (question.ToLower().Contains("viento"))
+            {
+                response.Append($" Además, la velocidad del viento es de {climateData.Wind.Speed} m/s.");
+            }
+            if (question.ToLower().Contains("humedad"))
+            {
+                response.Append($" La humedad relativa es del {climateData.Main.Humidity}%.");
+            }
+
+            response.Append(" ¿Hay algo más que te gustaría saber?");
+            return response.ToString();
         }
 
         private string DetermineIntent(string question)
         {
-            if (question.Contains("hola", StringComparison.OrdinalIgnoreCase) ||
-                question.Contains("hi", StringComparison.OrdinalIgnoreCase))
+            // Ampliar las intenciones que puede detectar
+            if (question.ToLower().Contains("hola") || question.ToLower().Contains("hi"))
             {
                 return "greeting";
             }
-            if (question.Contains("adios", StringComparison.OrdinalIgnoreCase) ||
-                question.Contains("bye", StringComparison.OrdinalIgnoreCase))
+            if (question.ToLower().Contains("adios") || question.ToLower().Contains("bye"))
             {
                 return "goodbye";
             }
-            if (question.Contains("qué más sabes", StringComparison.OrdinalIgnoreCase) ||
-                question.Contains("info", StringComparison.OrdinalIgnoreCase))
+            if (question.ToLower().Contains("clima") || question.ToLower().Contains("temperatura"))
+            {
+                return "weather";
+            }
+            if (question.ToLower().Contains("qué más sabes") || question.ToLower().Contains("info"))
             {
                 return "info";
             }
-            return "weather";
+            if (question.ToLower().Contains("viento") || question.ToLower().Contains("humedad"))
+            {
+                return "weather";
+            }
+            return "unknown";
         }
     }
 
