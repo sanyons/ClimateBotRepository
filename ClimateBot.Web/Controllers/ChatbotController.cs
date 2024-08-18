@@ -32,17 +32,39 @@ namespace ClimateBot.Web.Controllers
             try
             {
                 string intent = DetermineIntent(request.Question);
+                HttpContext.Session.SetString("lastIntent", intent);
+
                 if (intent == "unknown")
                 {
                     _logger.LogWarning("Could not determine intent for question: {Question}", request.Question);
                     return Ok(new { response = "No estoy seguro de cómo ayudarte con eso. ¿Puedes especificar si quieres saber sobre el clima o necesitas ayuda con otra cosa?" });
                 }
 
+                if (intent == "greeting")
+                {
+                    return Ok(new { response = "Hola, ¿cómo puedo ayudarte hoy? ¿Quieres saber el clima de alguna ciudad específica?" });
+                }
+
+                if (intent == "goodbye")
+                {
+                    return Ok(new { response = "¡Gracias por usar nuestro servicio de chat! Espero haber sido útil. ¡Hasta luego!" });
+                }
+
+                if (intent == "thanks")
+                {
+                    return Ok(new { response = "¡De nada! Estoy aquí para ayudarte. ¿Hay algo más que te gustaría saber?" });
+                }
+
                 string city = ExtractCity(request.Question);
                 if (string.IsNullOrEmpty(city) && intent == "weather")
                 {
-                    _logger.LogWarning("Could not extract city from question: {Question}", request.Question);
-                    return Ok(new { response = "No pude determinar la ciudad a partir de tu mensaje. ¿Podrías especificar más claramente?" });
+                    city = HttpContext.Session.GetString("lastCity");
+
+                    if (string.IsNullOrEmpty(city))
+                    {
+                        _logger.LogWarning("Could not extract city from question: {Question}", request.Question);
+                        return Ok(new { response = "No pude determinar la ciudad a partir de tu mensaje. ¿Podrías especificar más claramente?" });
+                    }
                 }
 
                 var climateData = await _climateService.GetClimateDataAsync(city);
@@ -52,8 +74,8 @@ namespace ClimateBot.Web.Controllers
                     return Ok(new { response = $"No pude encontrar información sobre el clima para {city}. ¿Podrías verificar el nombre de la ciudad?" });
                 }
 
-                string response = BuildResponse(climateData, request.Question, intent);
                 HttpContext.Session.SetString("lastCity", city);
+                string response = BuildResponse(climateData, request.Question, intent);
                 _logger.LogInformation("Successfully processed request for city: {City}", city);
                 return Ok(new { response });
             }
@@ -66,13 +88,10 @@ namespace ClimateBot.Web.Controllers
 
         private string ExtractCity(string question)
         {
-            // Elimina los signos de puntuación y convierte todo el texto a minúsculas para mejorar la coincidencia
             string cleanedQuestion = Regex.Replace(question.ToLower(), @"[^\w\s]", "");
 
-            // Definir un conjunto de ciudades conocidas para ayudar en la detección
             var knownCities = new List<string> { "londres", "madrid", "new york", "san jose", "tokio", "paris", "lima", "mexico", "buenos aires", "santiago", "london", "san josé", "washington", "cartago" };
 
-            // Buscar la primera ciudad conocida que coincida en la pregunta
             foreach (var city in knownCities)
             {
                 if (cleanedQuestion.Contains(city))
@@ -81,7 +100,6 @@ namespace ClimateBot.Web.Controllers
                 }
             }
 
-            // Intentar usar regex para extraer cualquier palabra capitalizada que podría ser una ciudad
             var cityRegex = new Regex(@"\b([A-Z][a-z]+(?:\s[A-Z][a-z]+)*)\b");
             var matches = cityRegex.Matches(question);
             foreach (Match match in matches)
@@ -92,12 +110,14 @@ namespace ClimateBot.Web.Controllers
                 }
             }
 
-            return HttpContext.Session.GetString("lastCity");
+            return null;
         }
 
         private string BuildResponse(ClimateData climateData, string question, string intent)
         {
-            if (intent == "greeting")
+            var lastIntent = HttpContext.Session.GetString("lastIntent");
+
+            if (intent == "greeting" && lastIntent != "weather")
             {
                 return "Hola, ¿cómo puedo ayudarte hoy? ¿Quieres saber el clima de alguna ciudad específica?";
             }
@@ -128,7 +148,6 @@ namespace ClimateBot.Web.Controllers
 
         private string DetermineIntent(string question)
         {
-            // Ampliar las intenciones que puede detectar
             if (question.ToLower().Contains("hola") || question.ToLower().Contains("hi"))
             {
                 return "greeting";
@@ -137,7 +156,11 @@ namespace ClimateBot.Web.Controllers
             {
                 return "goodbye";
             }
-            if (question.ToLower().Contains("clima") || question.ToLower().Contains("temperatura"))
+            if (question.ToLower().Contains("gracias") || question.ToLower().Contains("thank you"))
+            {
+                return "thanks";
+            }
+            if (question.ToLower().Contains("clima") || question.ToLower().Contains("temperatura") || question.ToLower().StartsWith("y en"))
             {
                 return "weather";
             }
