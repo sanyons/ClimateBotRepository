@@ -2,9 +2,9 @@
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using ClimateBot.Web.Models;
+using TFPAW.ClimateBot.Web.Models;
 
-namespace ClimateBot.Web.Services
+namespace TFPAW.ClimateBot.Web.Services
 {
     public class ClimateService : IClimateService
     {

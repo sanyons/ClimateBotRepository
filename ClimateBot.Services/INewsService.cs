@@ -1,11 +1,11 @@
-﻿using ClimateBot.Models;
+﻿using TFPAW.ClimateBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClimateBot.Services
+namespace TFPAW.ClimateBot.Services
 {
     public interface INewsService
     {

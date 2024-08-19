@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\TFPAW.ClimateBot.Web.props" />
+</Project>

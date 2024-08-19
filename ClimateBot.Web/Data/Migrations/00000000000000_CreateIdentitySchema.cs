@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace ClimateBot.Web.Data.Migrations
+namespace TFPAW.ClimateBot.Web.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

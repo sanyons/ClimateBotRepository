@@ -1,0 +1,13 @@
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\bin\Debug\net8.0\TFPAW.ClimateBot.Models.deps.json
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\bin\Debug\net8.0\TFPAW.ClimateBot.Models.dll
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\bin\Debug\net8.0\TFPAW.ClimateBot.Models.pdb
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.csproj.AssemblyReference.cache
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.AssemblyInfoInputs.cache
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.AssemblyInfo.cs
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.csproj.CoreCompileInputs.cache
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.sourcelink.json
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.dll
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\refint\TFPAW.ClimateBot.Models.dll
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.pdb
+C:\Users\chifr\Documents\GitHub\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\ref\TFPAW.ClimateBot.Models.dll

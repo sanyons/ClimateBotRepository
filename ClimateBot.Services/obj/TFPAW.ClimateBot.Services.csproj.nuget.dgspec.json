@@ -1,0 +1,150 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Services\\TFPAW.ClimateBot.Services.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj",
+        "projectName": "TFPAW.ClimateBot.Models",
+        "projectPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj",
+        "packagesPath": "C:\\Users\\chifr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chifr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Services\\TFPAW.ClimateBot.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Services\\TFPAW.ClimateBot.Services.csproj",
+        "projectName": "TFPAW.ClimateBot.Services",
+        "projectPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Services\\TFPAW.ClimateBot.Services.csproj",
+        "packagesPath": "C:\\Users\\chifr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chifr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj": {
+                "projectPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

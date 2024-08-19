@@ -1772,33 +1772,35 @@
           }
         }
       },
-      "ClimateBot.Models/1.0.0": {
+      "TFPAW.ClimateBot.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "8.0.0",
-          "Microsoft.Extensions.Http": "8.0.0"
+          "Microsoft.Extensions.Http": "8.0.0",
+          "Microsoft.Extensions.Logging": "8.0.0"
         },
         "compile": {
-          "bin/placeholder/ClimateBot.Models.dll": {}
+          "bin/placeholder/TFPAW.ClimateBot.Models.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ClimateBot.Models.dll": {}
+          "bin/placeholder/TFPAW.ClimateBot.Models.dll": {}
         }
       },
-      "ClimateBot.Services/1.0.0": {
+      "TFPAW.ClimateBot.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "ClimateBot.Models": "1.0.0",
           "Microsoft.Extensions.Configuration": "8.0.0",
-          "Microsoft.Extensions.Http": "8.0.0"
+          "Microsoft.Extensions.Http": "8.0.0",
+          "Microsoft.Extensions.Logging": "8.0.0",
+          "TFPAW.ClimateBot.Models": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/ClimateBot.Services.dll": {}
+          "bin/placeholder/TFPAW.ClimateBot.Services.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ClimateBot.Services.dll": {}
+          "bin/placeholder/TFPAW.ClimateBot.Services.dll": {}
         }
       }
     }
@@ -4798,49 +4800,45 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "ClimateBot.Models/1.0.0": {
+    "TFPAW.ClimateBot.Models/1.0.0": {
       "type": "project",
-      "path": "../ClimateBot.Models/ClimateBot.Models.csproj",
-      "msbuildProject": "../ClimateBot.Models/ClimateBot.Models.csproj"
+      "path": "../ClimateBot.Models/TFPAW.ClimateBot.Models.csproj",
+      "msbuildProject": "../ClimateBot.Models/TFPAW.ClimateBot.Models.csproj"
     },
-    "ClimateBot.Services/1.0.0": {
+    "TFPAW.ClimateBot.Services/1.0.0": {
       "type": "project",
-      "path": "../ClimateBot.Services/ClimateBot.Services.csproj",
-      "msbuildProject": "../ClimateBot.Services/ClimateBot.Services.csproj"
+      "path": "../ClimateBot.Services/TFPAW.ClimateBot.Services.csproj",
+      "msbuildProject": "../ClimateBot.Services/TFPAW.ClimateBot.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "ClimateBot.Models >= 1.0.0",
-      "ClimateBot.Services >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.1",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.1",
       "Microsoft.AspNetCore.Identity.UI >= 8.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.1",
       "Microsoft.Extensions.Configuration >= 8.0.0",
-      "Microsoft.Extensions.Http >= 8.0.0"
+      "Microsoft.Extensions.Http >= 8.0.0",
+      "Microsoft.Extensions.Logging >= 8.0.0",
+      "TFPAW.ClimateBot.Models >= 1.0.0",
+      "TFPAW.ClimateBot.Services >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jdani\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\chifr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Web\\ClimateBot.Web.csproj",
-      "projectName": "ClimateBot.Web",
-      "projectPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Web\\ClimateBot.Web.csproj",
-      "packagesPath": "C:\\Users\\jdani\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Web\\obj\\",
+      "projectUniqueName": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Web\\TFPAW.ClimateBot.Web.csproj",
+      "projectName": "TFPAW.ClimateBot.Web",
+      "projectPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Web\\TFPAW.ClimateBot.Web.csproj",
+      "packagesPath": "C:\\Users\\chifr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jdani\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\chifr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4848,18 +4846,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\ClimateBot.Models.csproj": {
-              "projectPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\ClimateBot.Models.csproj"
+            "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj": {
+              "projectPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj"
             },
-            "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Services\\ClimateBot.Services.csproj": {
-              "projectPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Services\\ClimateBot.Services.csproj"
+            "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Services\\TFPAW.ClimateBot.Services.csproj": {
+              "projectPath": "C:\\Users\\chifr\\Documents\\GitHub\\ClimateBotRepository\\ClimateBot.Services\\TFPAW.ClimateBot.Services.csproj"
             }
           }
         }
@@ -4899,6 +4896,10 @@
             "version": "[8.0.0, )"
           },
           "Microsoft.Extensions.Http": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
+          "Microsoft.Extensions.Logging": {
             "target": "Package",
             "version": "[8.0.0, )"
           }
