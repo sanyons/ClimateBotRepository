@@ -1,5 +1,5 @@
-﻿using ClimateBot.Web.Services;
-using ClimateBot.Web.Models;
+﻿using TFPAW.ClimateBot.Web.Services;
+using TFPAW.ClimateBot.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks;
 
 
-namespace ClimateBot.Web.Services
+namespace TFPAW.ClimateBot.Web.Services
 {
     public interface IClimateService
     {

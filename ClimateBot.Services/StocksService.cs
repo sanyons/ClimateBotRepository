@@ -1,4 +1,4 @@
-﻿using ClimateBot.Models;
+﻿using TFPAW.ClimateBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-namespace ClimateBot.Services {
+namespace TFPAW.ClimateBot.Services {
     //DIP
     //OCP: La clase StocksService está abierta para extensión (nuevas funcionalidades) pero cerrada para modificación
     public class StocksService : IStocksService

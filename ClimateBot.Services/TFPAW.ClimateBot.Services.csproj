@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClimateBot.Models\ClimateBot.Models.csproj" />
+    <ProjectReference Include="..\ClimateBot.Models\TFPAW.ClimateBot.Models.csproj" />
   </ItemGroup>
 
 </Project>

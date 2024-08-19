@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using ClimateBot.Web.Services;
-namespace ClimateBot.Services
+using TFPAW.ClimateBot.Web.Services;
+namespace TFPAW.ClimateBot.Services
 {
     // DESIGN_PATTERN: Factory Pattern
     // La clase NewsServiceFactory implementa el patron de diseño Factory para crear instancias de servicios especificos.
