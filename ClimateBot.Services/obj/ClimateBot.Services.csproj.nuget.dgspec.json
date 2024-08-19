@@ -4,12 +4,12 @@
     "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Services\\ClimateBot.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\ClimateBot.Models.csproj": {
+    "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\ClimateBot.Models.csproj",
-        "projectName": "ClimateBot.Models",
-        "projectPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\ClimateBot.Models.csproj",
+        "projectUniqueName": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj",
+        "projectName": "TFPAW.ClimateBot.Models",
+        "projectPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj",
         "packagesPath": "C:\\Users\\jdani\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\obj\\",
         "projectStyle": "PackageReference",
@@ -50,6 +50,10 @@
               "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[8.0.0, )"
             }
@@ -103,8 +107,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\ClimateBot.Models.csproj": {
-                "projectPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\ClimateBot.Models.csproj"
+              "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj": {
+                "projectPath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Models\\TFPAW.ClimateBot.Models.csproj"
               }
             }
           }
@@ -124,6 +128,10 @@
               "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[8.0.0, )"
             }

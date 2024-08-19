@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClimateBot.Models
+namespace TFPAW.ClimateBot.Models
 {
     public class NewsArticle
     {

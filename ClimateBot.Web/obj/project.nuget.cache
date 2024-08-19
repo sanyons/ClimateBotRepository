@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Fyv6XZvW5UbAc2ka5hBz0EtfevnrDMSWDWeQcYLiF6Rwj6j7eelVY3+uKc71aDUQm8fgDpRxzc4N+RSgKkbR8Q==",
+  "dgSpecHash": "BzKnXgo/1fgVstOzBsywrIFxN6jwwrn1JoCdJjZ/3ar9P5yDhasM49Ht+zzrEtCu0F4wOJOjgaEvUNc8whGXPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Web\\ClimateBot.Web.csproj",
+  "projectFilePath": "C:\\Users\\jdani\\source\\repos\\ClimateBotRepository\\ClimateBot.Web\\TFPAW.ClimateBot.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jdani\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\jdani\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClimateBot.Web.Data
+namespace TFPAW.ClimateBot.Web.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
