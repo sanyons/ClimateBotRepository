@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using ClimateBot.Web.Services;
 using System.Threading.Tasks;
 using ClimateBot.Web.Models;
-using System.Text.RegularExpressions;
 using System.Text;
 
 namespace ClimateBot.Web.Controllers
@@ -11,11 +10,13 @@ namespace ClimateBot.Web.Controllers
     public class ChatbotController : Controller
     {
         private readonly IClimateService _climateService;
+        private readonly NLPService _nlpService;
         private readonly ILogger<ChatbotController> _logger;
 
-        public ChatbotController(IClimateService climateService, ILogger<ChatbotController> logger)
+        public ChatbotController(IClimateService climateService, NLPService nlpService, ILogger<ChatbotController> logger)
         {
             _climateService = climateService;
+            _nlpService = nlpService;
             _logger = logger;
         }
 
@@ -31,7 +32,10 @@ namespace ClimateBot.Web.Controllers
 
             try
             {
-                string intent = DetermineIntent(request.Question);
+                var nlpResponse = await _nlpService.GetNLPResponseAsync(request.Question);
+                string intent = nlpResponse.Intent;
+                string city = nlpResponse.City;
+
                 HttpContext.Session.SetString("lastIntent", intent);
 
                 if (intent == "unknown")
@@ -55,7 +59,6 @@ namespace ClimateBot.Web.Controllers
                     return Ok(new { response = "¡De nada! Estoy aquí para ayudarte. ¿Hay algo más que te gustaría saber?" });
                 }
 
-                string city = ExtractCity(request.Question);
                 if (string.IsNullOrEmpty(city) && intent == "weather")
                 {
                     city = HttpContext.Session.GetString("lastCity");
@@ -84,33 +87,6 @@ namespace ClimateBot.Web.Controllers
                 _logger.LogError(ex, "An error occurred while processing the request.");
                 return StatusCode(500, new { response = "Lo siento, hubo un problema al procesar tu solicitud. Por favor, intenta nuevamente." });
             }
-        }
-
-        private string ExtractCity(string question)
-        {
-            string cleanedQuestion = Regex.Replace(question.ToLower(), @"[^\w\s]", "");
-
-            var knownCities = new List<string> { "londres", "madrid", "new york", "san jose", "tokio", "paris", "lima", "mexico", "buenos aires", "santiago", "london", "san josé", "washington", "cartago" };
-
-            foreach (var city in knownCities)
-            {
-                if (cleanedQuestion.Contains(city))
-                {
-                    return city;
-                }
-            }
-
-            var cityRegex = new Regex(@"\b([A-Z][a-z]+(?:\s[A-Z][a-z]+)*)\b");
-            var matches = cityRegex.Matches(question);
-            foreach (Match match in matches)
-            {
-                if (match.Success)
-                {
-                    return match.Value;
-                }
-            }
-
-            return null;
         }
 
         private string BuildResponse(ClimateData climateData, string question, string intent)
@@ -144,35 +120,6 @@ namespace ClimateBot.Web.Controllers
 
             response.Append(" ¿Hay algo más que te gustaría saber?");
             return response.ToString();
-        }
-
-        private string DetermineIntent(string question)
-        {
-            if (question.ToLower().Contains("hola") || question.ToLower().Contains("hi"))
-            {
-                return "greeting";
-            }
-            if (question.ToLower().Contains("adios") || question.ToLower().Contains("bye"))
-            {
-                return "goodbye";
-            }
-            if (question.ToLower().Contains("gracias") || question.ToLower().Contains("thank you"))
-            {
-                return "thanks";
-            }
-            if (question.ToLower().Contains("clima") || question.ToLower().Contains("temperatura") || question.ToLower().StartsWith("y en"))
-            {
-                return "weather";
-            }
-            if (question.ToLower().Contains("qué más sabes") || question.ToLower().Contains("info"))
-            {
-                return "info";
-            }
-            if (question.ToLower().Contains("viento") || question.ToLower().Contains("humedad"))
-            {
-                return "weather";
-            }
-            return "unknown";
         }
     }
 

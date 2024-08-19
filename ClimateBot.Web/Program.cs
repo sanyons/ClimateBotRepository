@@ -48,6 +48,12 @@ builder.Services.AddHttpClient<INewsService, NewsService>((serviceProvider, http
 // Register the ClimateService
 builder.Services.AddScoped<IClimateService, ClimateService>();
 
+// Register the NLPService with a configured HttpClient
+builder.Services.AddHttpClient<NLPService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5000"); // La URL base del servidor Flask
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
