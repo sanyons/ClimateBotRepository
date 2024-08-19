@@ -1,11 +1,11 @@
-﻿using TFPAW.ClimateBot.Web.Services;
+﻿using ClimateBot.Web.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TFPAW.ClimateBot.Services
+namespace ClimateBot.Services
 {
     // DESIGN_PATTERN: Factory Pattern
     //Aprovechamos el factory para poder usar un mismo servicio para poder pasar el resto de la informacion necesaria de los otros apis mapeados.

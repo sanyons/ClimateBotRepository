@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TFPAW.ClimateBot.Services;
-namespace TFPAW.ClimateBot.Web.Controllers
+using ClimateBot.Services;
+namespace ClimateBot.Web.Controllers
 {
     public class NewsController : Controller
     {

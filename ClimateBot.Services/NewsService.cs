@@ -1,4 +1,4 @@
-﻿using TFPAW.ClimateBot.Models;
+﻿using ClimateBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-namespace TFPAW.ClimateBot.Services
+namespace ClimateBot.Services
 {
     // SOLID: Dependency Inversion Principle (DIP)
     // SOLID: Open/Closed Principle (OCP)

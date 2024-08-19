@@ -1,4 +1,4 @@
-namespace TFPAW.ClimateBot.Web.Models
+namespace ClimateBot.Web.Models
 {
     public class ErrorViewModel
     {

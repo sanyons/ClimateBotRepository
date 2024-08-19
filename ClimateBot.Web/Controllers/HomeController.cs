@@ -1,11 +1,11 @@
-using TFPAW.ClimateBot.Web.Models;
+using ClimateBot.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using TFPAW.ClimateBot.Models;
-using TFPAW.ClimateBot.Services;
-using TFPAW.ClimateBot.Web.Services;
+using ClimateBot.Models;
+using ClimateBot.Services;
+using ClimateBot.Web.Services;
 
-namespace TFPAW.ClimateBot.Web.Controllers
+namespace ClimateBot.Web.Controllers
 {
     public class HomeController : Controller
     {

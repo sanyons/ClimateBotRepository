@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TFPAW.ClimateBot.Web.Models
+namespace ClimateBot.Web.Models
 {
     public class ClimateData
     {

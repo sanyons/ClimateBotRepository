@@ -1,7 +1,7 @@
-﻿using TFPAW.ClimateBot.Models;
-using static TFPAW.ClimateBot.Services.StocksService;
+﻿using ClimateBot.Models;
+using static ClimateBot.Services.StocksService;
 
-namespace TFPAW.ClimateBot.Web.Models
+namespace ClimateBot.Web.Models
 {
     public class HomeViewModel
     {

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TFPAW.ClimateBot.Web.Services;
+using ClimateBot.Web.Services;
 using System.Threading.Tasks;
-using TFPAW.ClimateBot.Web.Models;
+using ClimateBot.Web.Models;
 using System.Text;
 
-namespace TFPAW.ClimateBot.Web.Controllers
+namespace ClimateBot.Web.Controllers
 {
     public class ChatbotController : Controller
     {

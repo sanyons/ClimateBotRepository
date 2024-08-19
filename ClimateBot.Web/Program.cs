@@ -1,12 +1,12 @@
-using TFPAW.ClimateBot.Web.Data;
+using ClimateBot.Web.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TFPAW.ClimateBot.Services;
-using TFPAW.ClimateBot.Web.Services;
+using ClimateBot.Services;
+using ClimateBot.Web.Services;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);

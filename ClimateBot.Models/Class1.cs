@@ -1,4 +1,4 @@
-﻿namespace TFPAW.ClimateBot.Models
+﻿namespace ClimateBot.Models
 {
     public class Class1
     {

@@ -1,11 +1,11 @@
-﻿using TFPAW.ClimateBot.Models;
+﻿using ClimateBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static TFPAW.ClimateBot.Services.StocksService;
-namespace TFPAW.ClimateBot.Services
+using static ClimateBot.Services.StocksService;
+namespace ClimateBot.Services
 {
     public interface IStocksService
     {
