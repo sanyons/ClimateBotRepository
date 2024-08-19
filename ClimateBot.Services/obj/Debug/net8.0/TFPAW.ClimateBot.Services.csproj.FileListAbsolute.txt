@@ -14,3 +14,19 @@ C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\n
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\refint\TFPAW.ClimateBot.Services.dll
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.pdb
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ref\TFPAW.ClimateBot.Services.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\TFPAW.ClimateBot.Services.deps.json
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\TFPAW.ClimateBot.Services.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\TFPAW.ClimateBot.Services.pdb
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\TFPAW.ClimateBot.Models.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\bin\Debug\net8.0\TFPAW.ClimateBot.Models.pdb
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.csproj.AssemblyReference.cache
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.AssemblyInfoInputs.cache
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.AssemblyInfo.cs
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.csproj.CoreCompileInputs.cache
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.sourcelink.json
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.Cl.ED2BADA9.Up2Date
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\refint\TFPAW.ClimateBot.Services.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\TFPAW.ClimateBot.Services.pdb
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Services\obj\Debug\net8.0\ref\TFPAW.ClimateBot.Services.dll

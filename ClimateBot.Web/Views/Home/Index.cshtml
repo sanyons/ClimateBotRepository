@@ -17,96 +17,142 @@
         body {
             background-color: #f8f9fa; /* Light gray background */
         }
+
         .card {
-            box-shadow: 0 4px 8px rgba(0, 0, 3); /* Subtle shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             border: none; /* No border */
         }
+
         .card-title {
-            color: #000000; /* Bootstrap primary color */
+            color: #000000; /* Black color for titles */
             font-size: 1.25rem; /* Larger font size for titles */
             margin-bottom: 0.5rem;
         }
+
         .card-text {
             font-size: 1rem; /* Standard font size */
-            color: #ffff; /* Darker gray for text */
+            color: #000000; /* Black color for text */
         }
+
         .card-footer {
             background-color: #f8f9fa; /* Light gray for footer */
-            border-top: 1px solid #dee2e6; /* Light border on top */
+            border-top: 1px solid #f8f9fa; /* Light border on top */
         }
+
         .btn-primary {
-            background-color: #000000; /* Bootstrap primary color */
-            border-color: #007bff; /* Same border color */
+            background-color: #062863; /* Black color for button */
+            border-color: #f8f9fa; /* Same border color */
         }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-            border-color: #0056b3; /* Same border color */
-        }
+
+            .btn-primary:hover {
+                background-color: #333333; /* Darker shade on hover */
+                border-color: #333333; /* Same border color */
+            }
+
         h1 {
-            color: #ffffff; /* Darker heading */
-            font-size: 5rem; /* Larger font size */
+            color: #f8f9fa; /* Black color for headings */
+            font-size: 3rem; /* Adjusted font size */
+            text-align: center; /* Centered heading */
+            margin-bottom: 2rem; /* Space below heading */
         }
+
+        .carousel {
+            position: relative;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 3%; /* Reduce el tamaño de las flechas para que no tapen el contenido */
+            background-color: rgba(ffff); /* Fondo semitransparente para las flechas */
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #000; /* Color de fondo de los íconos de las flechas */
+            border-radius: 10%; /* Flechas redondeadas */
+        }
+
+        .carousel-control-prev {
+            left: 0; /* Posiciona la flecha de la izquierda */
+        }
+
+        .carousel-control-next {
+            right: 0; /* Posiciona la flecha de la derecha */
+        }
+
+        
     </style>
+
 </head>
 <body>
     <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-6">
-                <div id="stock-carousel" class="carousel widget">
-                    @if (Model.StockData != null && Model.StockData.Any())
+        <div class="row">
+            <!-- Stock Data Carousel -->
+            <div class="col-md-8">
+                <div id="stock-carousel" class="carousel slide" data-ride="carousel">
+                    @if (Model.StockData != null && Model.StockData.Count > 0)
                     {
-                        @for (var i = 0; i < Model.StockData.Count; i++)
-                        {
-                            <div class="stock-slide" style="display: @(i == 0 ? "block" : "none")">
-                                <div class="boxs widget-content">
-                                    <div class="pw_content">
-                                        <h5>@Model.StockData[i].Name (@Model.StockData[i].Symbol)</h5>
-                                        <p>Price: $@Model.StockData[i].Price</p>
-                                        <p>Change: @Model.StockData[i].Change ( @Model.StockData[i].ChangePercent % )</p>
-                                        <p>Prev Close: $@Model.StockData[i].PreviousClose</p>
-                                        <p>Update: @Model.StockData[i].LastUpdateUtc</p>
+                        <div class="carousel-inner">
+                            @for (var i = 0; i < Model.StockData.Count; i++)
+                            {
+                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                                    <div class="card text-black">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-black">@Model.StockData[i].Name (@Model.StockData[i].Symbol)</h5>
+                                            <p class="card-text">Price: $@Model.StockData[i].Price</p>
+                                            <p class="card-text">Change: @Model.StockData[i].Change ( @Model.StockData[i].ChangePercent % )</p>
+                                            <p class="card-text">Prev Close: $@Model.StockData[i].PreviousClose</p>
+                                            <p class="card-text">Last Update: @Model.StockData[i].LastUpdateUtc</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                        <button class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</button>
-                        <button class="carousel-control next" onclick="moveSlide(1)">&#10095;</button>
+                            }
+                        </div>
+                        <a class="carousel-control-prev" href="#stock-carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#stock-carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     }
                     else
                     {
-                        <p>No stock data available.</p>
+                        <p class="text-black">No stock data available.</p>
                     }
                 </div>
             </div>
-            <div class="col-md-6">
-                <div id="climate-carousel" class="carousel widget">
+
+            <!-- Climate Data -->
+            <div class="col-md-4">
+                <div class="card text-black">
                     @if (Model.ClimateData != null)
                     {
-                        <div class="climate-slide" style="display: block">
-                            <div class="boxs widget-content">
-                                <div class="cw_content">
-                                    <h5>@Model.ClimateData.Name (@Model.ClimateData.Sys.Country)</h5>
-                                    <p>Temp: @Model.ClimateData.Main.Temp Kelvin</p>
-                                    <p>Feels Like: @Model.ClimateData.Main.FeelsLike Kelvin</p>
-                                    <p>Weather: @Model.ClimateData.Weather[0].Main - @Model.ClimateData.Weather[0].Description</p>
-                                    <p>Humidity: @Model.ClimateData.Main.Humidity%</p>
-                                    <p>Pressure: @Model.ClimateData.Main.Pressure hPa</p>
-                                    <p>Wind: @Model.ClimateData.Wind.Speed m/s</p>
-                                    <p>Visibility: @Model.ClimateData.Visibility meters</p>
-                                    <p>Sunrise: @DateTimeOffset.FromUnixTimeSeconds(Model.ClimateData.Sys.Sunrise).DateTime</p>
-                                    <p>Sunset: @DateTimeOffset.FromUnixTimeSeconds(Model.ClimateData.Sys.Sunset).DateTime</p>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-black">@Model.ClimateData.Name (@Model.ClimateData.Sys.Country)</h5>
+                            <p class="card-text">Temp: @Model.ClimateData.Main.Temp Kelvin</p>
+                            <p class="card-text">Feels Like: @Model.ClimateData.Main.FeelsLike Kelvin</p>
+                            <p class="card-text">Weather: @Model.ClimateData.Weather[0].Main - @Model.ClimateData.Weather[0].Description</p>
+                            <p class="card-text">Humidity: @Model.ClimateData.Main.Humidity%</p>
+                            <p class="card-text">Pressure: @Model.ClimateData.Main.Pressure hPa</p>
+                            <p class="card-text">Wind: @Model.ClimateData.Wind.Speed m/s</p>
+                            <p class="card-text">Visibility: @Model.ClimateData.Visibility meters</p>
+                            <p class="card-text">Sunrise: @DateTimeOffset.FromUnixTimeSeconds(Model.ClimateData.Sys.Sunrise).DateTime</p>
+                            <p class="card-text">Sunset: @DateTimeOffset.FromUnixTimeSeconds(Model.ClimateData.Sys.Sunset).DateTime</p>
                         </div>
                     }
                     else
                     {
-                        <p>No climate data available.</p>
+                        <p class="text-black">No climate data available.</p>
                     }
                 </div>
             </div>
         </div>
     </div>
+
+
+
 
     <div class="container mt-4">
         <h1 class="mb-4">Latest News</h1>

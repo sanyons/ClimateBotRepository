@@ -11,3 +11,16 @@ C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Models\obj\Debug\net
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\refint\TFPAW.ClimateBot.Models.dll
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.pdb
 C:\Users\jdani\source\repos\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\ref\TFPAW.ClimateBot.Models.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\bin\Debug\net8.0\TFPAW.ClimateBot.Models.deps.json
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\bin\Debug\net8.0\TFPAW.ClimateBot.Models.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\bin\Debug\net8.0\TFPAW.ClimateBot.Models.pdb
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.csproj.AssemblyReference.cache
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.AssemblyInfoInputs.cache
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.AssemblyInfo.cs
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.csproj.CoreCompileInputs.cache
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.sourcelink.json
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\refint\TFPAW.ClimateBot.Models.dll
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\TFPAW.ClimateBot.Models.pdb
+C:\Users\PC MASTER\Documents\NetBeansProjects\GITHUB\ClimateBotRepository\ClimateBot.Models\obj\Debug\net8.0\ref\TFPAW.ClimateBot.Models.dll

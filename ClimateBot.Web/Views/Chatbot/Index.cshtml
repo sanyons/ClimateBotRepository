@@ -9,28 +9,38 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #e9ecef; /* Color de fondo para el cuerpo de la página */
+        }
+
         .chat-container {
-            max-width: 600px;
+            width: 90vw; /* Usar el 90% del ancho de la ventana */
+            max-width: 800px; /* Ancho máximo del contenedor */
+            height: 80vh; /* Usar el 80% de la altura de la ventana */
             margin: 0 auto;
             background-color: #f8f9fa;
-            border-radius: 10px;
+            border-radius: 15px; /* Bordes redondeados del contenedor */
             padding: 20px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .chat-box {
-            max-height: 400px;
+            flex-grow: 1;
             overflow-y: auto;
-            padding: 10px;
+            padding: 15px;
             background-color: #ffffff;
-            border-radius: 10px;
+            border-radius: 15px; /* Bordes redondeados del área del chat */
             margin-bottom: 10px;
             box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .chat-bubble {
             padding: 10px 15px;
-            border-radius: 20px;
+            border-radius: 15px; /* Bordes redondeados de las burbujas */
             margin-bottom: 10px;
             display: inline-block;
             max-width: 80%;
@@ -46,28 +56,67 @@
                 background-color: #eeeeee;
                 align-self: flex-start;
             }
+
+        .welcome-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #888888;
+            font-size: 16px;
+            text-align: center;
+            width: 100%;
+            display: none;
+        }
+
+        .new-chat-btn {
+            margin-bottom: 10px;
+        }
+
+        .form-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #questionInput {
+            flex-grow: 1;
+        }
     </style>
 </head>
 <body>
     <div class="container mt-5 chat-container">
         <h4 class="text-center mb-4">Chatbot del Clima</h4>
+        <button id="newChatBtn" class="btn btn-secondary alert-success">Nuevo Chat</button>
         <div id="chatBox" class="chat-box d-flex flex-column">
+            <div id="welcomeMessage" class="welcome-message">
+                ¡Hola! Soy el Chatbot del Clima. Estoy diseñado para responder cualquier pregunta sobre el clima
+            </div>
             <!-- Aquí aparecerán las burbujas del chat -->
         </div>
-        <form id="chatForm" class="d-flex">
-            <input type="text" id="questionInput" class="form-control me-2" placeholder="Escribe tu mensaje...">
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+        <div class="form-container">
+            <form id="chatForm" class="d-flex w-100">
+                <input type="text" id="questionInput" class="form-control me-2" placeholder="Escribe tu mensaje...">
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </form>
+        </div>
     </div>
 
     <!-- Bootstrap 5 JS (Popper.js is included) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        function updateWelcomeMessageVisibility() {
+            const chatBox = document.getElementById('chatBox');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.style.display = chatBox.children.length === 1 ? 'block' : 'none';
+        }
+
         document.getElementById('chatForm').addEventListener('submit', async function (event) {
             event.preventDefault();
             const questionInput = document.getElementById('questionInput');
             const question = questionInput.value;
+
+            if (!question.trim()) return; // No enviar si el input está vacío
 
             // Mostrar la pregunta del usuario en el chat
             addChatBubble(question, 'user');
@@ -83,7 +132,7 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`); 
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
                 const data = await response.json();
@@ -96,6 +145,7 @@
 
             // Limpiar el campo de entrada
             questionInput.value = '';
+            updateWelcomeMessageVisibility();
         });
 
         function addChatBubble(text, sender) {
@@ -107,8 +157,17 @@
 
             // Desplazarse hacia abajo en el chat
             chatBox.scrollTop = chatBox.scrollHeight;
+            updateWelcomeMessageVisibility();
         }
-    </script>
 
+        document.getElementById('newChatBtn').addEventListener('click', function () {
+            // Limpiar el chat actual para iniciar un nuevo chat
+            document.getElementById('chatBox').innerHTML = '<div id="welcomeMessage" class="welcome-message">¡Hola! Soy el Chatbot del Clima. Estoy diseñado para responder cualquier pregunta sobre el clima</div>';
+            updateWelcomeMessageVisibility();
+        });
+
+        // Inicializar el estado del mensaje de bienvenida al cargar la página
+        updateWelcomeMessageVisibility();
+    </script>
 </body>
 </html>
